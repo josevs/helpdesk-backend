@@ -1,4 +1,4 @@
-package com.valdir.helpdesk.services.exceptions;
+package com.valdir.helpdesk.resources.exceptions;
 
 import java.io.Serializable;
 
