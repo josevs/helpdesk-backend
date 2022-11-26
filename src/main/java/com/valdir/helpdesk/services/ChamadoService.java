@@ -1,11 +1,13 @@
 package com.valdir.helpdesk.services;
 
+import java.util.List;
 import java.util.Optional;
 
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import com.valdir.helpdesk.domain.Chamado;
+import com.valdir.helpdesk.domain.dtos.ChamadoDTO;
 import com.valdir.helpdesk.repositories.ChamadoRepository;
 import com.valdir.helpdesk.services.exceptions.ObjectnotfoundException;
 
@@ -18,6 +20,10 @@ public class ChamadoService {
 	public Chamado findById(Long id) {
 		Optional<Chamado> obj = repository.findById(id);
 		return obj.orElseThrow(() -> new ObjectnotfoundException("Objeto não encontrado! ID:" + id));
+	}
+
+	public List<Chamado> findAll() {
+		return repository.findAll();
 	}
 
 }
