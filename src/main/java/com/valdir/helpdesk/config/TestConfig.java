@@ -12,10 +12,10 @@ import com.valdir.helpdesk.services.DBService;
 public class TestConfig {
 
 	@Autowired
-	private DBService dbservice;
+	private DBService dbService;
 	
 	@Bean
 	public void instanciaDB() {
-		this.dbservice.instanciaDB();
+		this.dbService.instanciaDB();
 	}
 }

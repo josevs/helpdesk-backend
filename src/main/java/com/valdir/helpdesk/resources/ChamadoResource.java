@@ -36,8 +36,11 @@ public class ChamadoResource {
 		
 	}
 	
+	
+
 	@RequestMapping
 	public ResponseEntity<List<ChamadoDTO>> findAll(){
+		System.out.println("usuário:");
 		List<Chamado> list = service.findAll();
 		List<ChamadoDTO> listDTO = list.stream().map(obj -> new ChamadoDTO(obj)).collect(Collectors.toList());
 		
