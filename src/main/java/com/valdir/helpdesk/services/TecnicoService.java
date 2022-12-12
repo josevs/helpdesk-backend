@@ -50,6 +50,11 @@ public class TecnicoService {
 	public Tecnico update(Long id, @Valid TecnicoDTO objDTO) {
 		objDTO.setId(id); // necessário atribuir id para evitar (falha de segurança) que o framework atribua um id diferente.
 		Tecnico oldObj = findById(id);
+		
+		if(!objDTO.getSenha().equals(oldObj.getSenha())) {
+			objDTO.setSenha( encoder.encode(objDTO.getSenha()) );
+		}
+		
 		validaPorCpfEEmail(objDTO);
 		oldObj = new Tecnico(objDTO);
 		return repository.save(oldObj);

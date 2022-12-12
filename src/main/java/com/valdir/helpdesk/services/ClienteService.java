@@ -50,6 +50,11 @@ public class ClienteService {
 	public Cliente update(Long id, @Valid ClienteDTO objDTO) {
 		objDTO.setId(id); // necessário atribuir id para evitar (falha de segurança) que o framework atribua um id diferente.
 		Cliente oldObj = findById(id);
+		
+		if(!objDTO.getSenha().equals(oldObj.getSenha())) {
+			objDTO.setSenha( encoder.encode(objDTO.getSenha()) );
+		}
+		
 		validaPorCpfEEmail(objDTO);
 		oldObj = new Cliente(objDTO);
 		return repository.save(oldObj);
